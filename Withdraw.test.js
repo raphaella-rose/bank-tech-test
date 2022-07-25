@@ -13,6 +13,14 @@ describe(Withdraw, () => {
 
     expect(withdraw.getDate()).toBe(date);
   })
+
+  it("updates balance after withdrawal", () => {
+    const withdraw = new Withdraw(5);
+
+    withdraw.updateBalance(10);
+
+    expect(withdraw.balance).toBe(5);
+  })
 })
 
 
