@@ -13,5 +13,16 @@ describe(Deposit, () => {
 
     expect(deposit.getDate()).toBe(date);
   })
+
+  it("updates balance", () => {
+    const deposit = new Deposit(5);
+
+    const balance = deposit.updateBalance(0);
+
+    expect(balance).toBe(5);
+  })
+
+ //updates account balance
+ //creates statement for deposit
 })
 

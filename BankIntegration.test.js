@@ -8,29 +8,7 @@ describe("Bank Integration", () => {
     expect(account.balance).toBe(0);
   })
 
-  it("increases balance by 5 when deposit of 5 is made", () => {
-    const account = new Account();
-
-    account.deposit(5);
-
-    expect(account.balance).toBe(5);
-  })
-
-  it("increases balance by 10 when deposit of 10 is made", () => {
-    const account = new Account();
-
-    account.deposit(10);
-
-    expect(account.balance).toBe(10);
-  })
-
-  it("increases balance by 20 when deposit of 20 is made", () => {
-    const account = new Account();
-
-    account.deposit(20);
-
-    expect(account.balance).toBe(20);
-  })
+  
 
   it("returns empty array when no deposits have been made", () => {
     const account = new Account();
