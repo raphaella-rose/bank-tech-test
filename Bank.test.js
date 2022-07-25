@@ -89,4 +89,13 @@ describe(Bank, () => {
     expect(account.showBalance()).toBe(0);
   })
 
+  it("shows a withdrawal amount on statement", () => {
+    const account = new Bank();
+    const date = new Date().toLocaleDateString();
+    account.deposit(10);
+    account.withdraw(10);
+
+    expect(account.seeStatement()).toEqual([[10], [date, 10, 10]])
+  })
+
 })
