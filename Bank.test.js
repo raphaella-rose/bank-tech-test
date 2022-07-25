@@ -109,7 +109,7 @@ describe(Bank, () => {
     account.deposit(10);
     account.withdraw(10);
 
-    expect(account.seeStatement()).toEqual([[date, 10], [date, 10, 10]])
+    expect(account.seeStatement()).toEqual([[date, 10, 0], [date, 10, 10]])
   })
 
   it("shows a withdrawal amount on statement when user attempts to withdraw more than they have", () => {
@@ -119,7 +119,7 @@ describe(Bank, () => {
     account.deposit(10);
     account.withdraw(15);
 
-    expect(account.seeStatement()).toEqual([[date, 10], [date, 10, 10]])
+    expect(account.seeStatement()).toEqual([[date, 10, 0], [date, 10, 10]])
   })
 
   it("shows the date on statement in format dd/mm/yyy", () => {
@@ -129,6 +129,16 @@ describe(Bank, () => {
     account.deposit(20);
     account.withdraw(10);
 
-    expect(account.seeStatement()).toEqual([[date, 10], [date, 20, 20]])
+    expect(account.seeStatement()).toEqual([[date, 10, 10], [date, 20, 20]])
+  })
+
+  it("shows balance after withdrawal on statement", () => {
+    const account = new Bank();
+    const date = new Date().toLocaleDateString();
+
+    account.deposit(20);
+    account.withdraw(10);
+
+    expect(account.seeStatement()).toEqual([[date, 10, 10], [date, 20, 20]])
   })
 })

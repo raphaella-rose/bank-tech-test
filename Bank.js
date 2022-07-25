@@ -25,7 +25,7 @@ class Bank {
     }
 
     this.balance -= newAmount;
-    this.statement.unshift([date, newAmount])
+    this.statement.unshift([date, newAmount, this.balance])
     
   }
 
