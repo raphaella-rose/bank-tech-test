@@ -14,8 +14,8 @@ class Bank {
     this.statement.unshift([date, amount, this.balance]);
   }
 
-  withdraw() {
-    this.balance -= 5;
+  withdraw(amount) {
+    this.balance -= amount;
   }
 
   seeStatement() {

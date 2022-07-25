@@ -58,7 +58,7 @@ describe(Bank, () => {
     expect(account.seeStatement()).toEqual([[date, 10, 10]])
   })
 
-  it("allows the user to make a withdrawal", () => {
+  it("allows the user to make a withdrawal of 5", () => {
     const account = new Bank();
     account.deposit(10);
     account.withdraw(5);
@@ -66,5 +66,12 @@ describe(Bank, () => {
     expect(account.showBalance()).toBe(5);
   })
 
+  it("allows the user to make a withdrawal of 10", () => {
+    const account = new Bank();
+    account.deposit(10);
+    account.withdraw(10);
+    
+    expect(account.showBalance()).toBe(0);
+  })
 
 })
