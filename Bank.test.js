@@ -108,7 +108,7 @@ describe(Bank, () => {
     ])
   })
 
-  it("prints deposit statement in correct format", () => {
+  it("prints single deposit statement in correct format", () => {
     const account = new Bank();
     const date = new Date().toLocaleDateString();
 
@@ -117,6 +117,17 @@ describe(Bank, () => {
     expect(account.seeStatement()).toBe(`date || credit || debit || balance\n${date} || 1000.00 || || 1000.00\n`)
   })
 
- 
+  it("prints mixed statement in correct format", () => {
+    const account = new Bank();
+    const date = new Date().toLocaleDateString();
+
+    account.deposit(1000);
+    account.deposit(2000);
+    account.withdraw(500);
+    
+    expect(account.seeStatement()).toBe(
+      `date || credit || debit || balance\n${date} || || 500.00 || 2500.00\n${date} || 2000.00 || || 3000.00\n${date} || 1000.00 || || 1000.00\n`)
+  })
 
 })
+
