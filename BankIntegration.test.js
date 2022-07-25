@@ -1,6 +1,7 @@
 const Account = require("./Account")
 
-describe(Account, () => {
+
+describe("Bank Integration", () => {
   it("initializes a account account with a balance of 0", () => {
     const account = new Account();
 

@@ -3,10 +3,9 @@ class Account {
     this.balance = 0;
     this.statement = []
   }
-
+  
   deposit(amount) {
     const date = new Date().toLocaleDateString();
-
     this.balance += amount;
     this.statement.unshift({
       date: date,
