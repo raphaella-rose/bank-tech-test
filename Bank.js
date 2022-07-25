@@ -10,13 +10,14 @@ class Bank {
 
   deposit(amount) {
     this.balance += amount;
+    this.statement.unshift(amount);
   }
 
   seeStatement() {
     if (this.balance == 0) {
       return []
     } else {
-      return [30, 5]
+      return this.statement;
     }
    
   }
