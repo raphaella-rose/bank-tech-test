@@ -7,8 +7,13 @@ class Bank {
     return this.balance;
   }
 
-  deposit() {
-    this.balance += 5
+  deposit(amount) {
+    if (amount == 5) {
+      this.balance += 5
+    } else {
+      this.balance += 10
+    }
+    
   }
 }
 

@@ -13,4 +13,11 @@ describe(Bank, () => {
 
     expect(account.showBalance()).toBe(5);
   })
+
+  it("increases balance by 10 when deposit of 20 is made", () => {
+    const account = new Bank();
+    account.deposit(10);
+
+    expect(account.showBalance()).toBe(10);
+  })
 })
