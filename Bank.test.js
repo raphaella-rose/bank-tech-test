@@ -4,6 +4,13 @@ describe(Bank, () => {
   it("initializes a bank account with a balance of 0", () => {
     const account = new Bank();
 
-    expect(account.balance()).toBe(0);
+    expect(account.showBalance()).toBe(0);
+  })
+
+  it("increases balance by 5 when deposit of 5 is made", () => {
+    const account = new Bank();
+    account.deposit(5);
+
+    expect(account.showBalance()).toBe(5);
   })
 })
