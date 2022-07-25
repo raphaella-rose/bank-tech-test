@@ -9,9 +9,15 @@ class Bank {
   }
 
   deposit(amount) {
-    this.balance += amount;
     const date = new Date().toLocaleDateString();
-    this.statement.unshift([date, amount, this.balance]);
+
+    this.balance += amount;
+    this.statement.unshift({
+      date: date,
+      credit: amount,
+      debit: null,
+      balance: this.balance,
+    });
   }
 
   withdraw(amount) {
@@ -25,12 +31,17 @@ class Bank {
     }
 
     this.balance -= newAmount;
-    this.statement.unshift([date, newAmount, this.balance])
+    this.statement.unshift({
+      date: date,
+      credit: null,
+      debit: newAmount,
+      balance: this.balance,
+    })
     
   }
 
   seeStatement() {
-    return this.statement;
+    let statement = "date || credit || debit || balance"
   }
 
   calculateWithdrawal(amount) {

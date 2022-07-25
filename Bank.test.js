@@ -37,34 +37,19 @@ describe(Bank, () => {
     expect(account.statement).toEqual([]);
   })
 
-  it("stores the amount for a single deposit made", () => {
+  it("stores the amount, date (dd/mm/yyy) and balance for a single deposit made", () => {
     const account = new Bank();
     const date = new Date().toLocaleDateString();
 
     account.deposit(10);
    
-
-    expect(account.statement).toEqual([[date, 10, 10]])
-  })
-
-  it("stores the balance for a single deposit made", () => {
-    const account = new Bank();
-    const date = new Date().toLocaleDateString();
-
-    account.deposit(10);
-   
-
-    expect(account.statement).toEqual([[date, 10, 10]])
-  })
-
-  it("stores the date for a single deposit in format dd/mm/yyy", () => {
-    const account = new Bank();
-    const date = new Date().toLocaleDateString();
-
-    account.deposit(10);
-    
-
-    expect(account.statement).toEqual([[date, 10, 10]])
+    expect(account.statement).toEqual([
+      { date: date,
+        credit: 10,
+        debit: null,
+        balance: 10,
+      },
+    ])
   })
 
   it("allows the user to make a withdrawal of 5", () => {
@@ -102,43 +87,25 @@ describe(Bank, () => {
     expect(account.showBalance()).toBe(0);
   })
 
-  it("shows a withdrawal amount on statement", () => {
+  it("shows a withdrawal amount, date (dd/mm/yyy), balance on statement", () => {
     const account = new Bank();
     const date = new Date().toLocaleDateString();
 
     account.deposit(10);
     account.withdraw(10);
 
-    expect(account.statement).toEqual([[date, 10, 0], [date, 10, 10]])
+    expect(account.statement).toEqual([
+      { date: date,
+        credit: null,
+        debit: 10,
+        balance: 0,
+      },
+      { date: date,
+        credit: 10,
+        debit: null,
+        balance: 10,
+      },
+    ])
   })
 
-  it("shows a withdrawal amount on statement when user attempts to withdraw more than they have", () => {
-    const account = new Bank();
-    const date = new Date().toLocaleDateString();
-
-    account.deposit(10);
-    account.withdraw(15);
-
-    expect(account.statement).toEqual([[date, 10, 0], [date, 10, 10]])
-  })
-
-  it("shows the date on statement in format dd/mm/yyy", () => {
-    const account = new Bank();
-    const date = new Date().toLocaleDateString();
-
-    account.deposit(20);
-    account.withdraw(10);
-
-    expect(account.statement).toEqual([[date, 10, 10], [date, 20, 20]])
-  })
-
-  it("shows balance after withdrawal on statement", () => {
-    const account = new Bank();
-    const date = new Date().toLocaleDateString();
-
-    account.deposit(20);
-    account.withdraw(10);
-
-    expect(account.statement).toEqual([[date, 10, 10], [date, 20, 20]])
-  })
 })
