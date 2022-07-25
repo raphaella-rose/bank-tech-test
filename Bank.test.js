@@ -74,4 +74,11 @@ describe(Bank, () => {
     expect(account.showBalance()).toBe(0);
   })
 
+  it("user cannot withdraw money when balance is 0", () => {
+    const account = new Bank();
+    account.withdraw(5);
+
+    expect(account.showBalance()).toBe(0);
+  })
+
 })
