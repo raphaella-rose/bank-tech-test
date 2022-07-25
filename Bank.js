@@ -16,17 +16,19 @@ class Bank {
 
   withdraw(amount) {
     if ((this.balance - amount) < 0) {
-      let difference = amount - this.balance;
-      let ableToWithdraw = amount - difference;
-      this.balance -= ableToWithdraw
+      this.balance -= this.calculateWithdrawal(amount)
     } else {
       this.balance -= amount;
     }
-
   }
 
   seeStatement() {
     return this.statement;
+  }
+
+  calculateWithdrawal(amount) {
+    let difference = amount - this.balance;
+    return amount - difference;
   }
 }
 
