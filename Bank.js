@@ -14,12 +14,8 @@ class Bank {
   }
 
   seeStatement() {
-    if (this.balance == 0) {
-      return []
-    } else {
-      return this.statement;
-    }
-   
+    return this.statement;
+  
   }
 }
 
