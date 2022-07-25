@@ -8,7 +8,6 @@ class StatementCreator  {
       this.isDeposit(action);
       this.isWithdrawal(action);
     });
-    console.log(this.statement)
     return this.statement;
   }
 

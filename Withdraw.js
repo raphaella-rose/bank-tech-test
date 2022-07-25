@@ -1,15 +1,27 @@
 class Withdraw {
   constructor(amount, currentBalance) {
     this.amount = amount;
-    this.balance = currentBalance - this.amount;
+    this.currentBalance = currentBalance;
+    this.balance = this.currentBalance - this.amount;
   }
 
   getDate() {
     return new Date().toLocaleDateString();
   }
 
+  canWithdraw() {
+    if ((this.currentBalance - this.amount) < 0 ) {
+      this.amount = this.calculateWithdrawal();
+    } 
+    this.balance = this.currentBalance - this.amount;
+  }
 
-  createStatement() {
+  calculateWithdrawal() {
+    let difference = this.amount - this.currentBalance;
+    return this.amount - difference;
+  }
+
+  saveHistory() {
     return {
       date: this.getDate(),
       credit: null,
@@ -21,16 +33,5 @@ class Withdraw {
 
 module.exports = Withdraw;
 
-// let newAmount = 0
-// const date = new Date().toLocaleDateString();
 
-// if ((this.balance - amount) < 0) {
-//   newAmount = this.calculateWithdrawal(amount);
-// } else {
-//   newAmount = amount;
-// }
 
-// calculateWithdrawal(amount) {
-//   let difference = amount - this.balance;
-//   return amount - difference;
-// }

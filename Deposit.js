@@ -8,7 +8,7 @@ class Deposit {
     return new Date().toLocaleDateString();
   }
 
-  createStatement() {
+  saveHistory() {
     return {
       date: this.getDate(),
       credit: this.amount,

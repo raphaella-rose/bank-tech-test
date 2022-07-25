@@ -24,9 +24,9 @@ describe(Withdraw, () => {
     const withdraw = new Withdraw(5, 15);
     const date = new Date().toLocaleDateString();
 
-    const statement = withdraw.createStatement();
+    const history = withdraw.saveHistory();
 
-    expect(statement).toEqual({
+    expect(history).toEqual({
       date: date,
       credit: null,
       debit: 5,
@@ -34,7 +34,21 @@ describe(Withdraw, () => {
     })
   })
 
+  it("doesn't allow user to withdraw money they don't have", () => {
+    const withdraw = new Withdraw(30, 20);
+    const date = new Date().toLocaleDateString();
 
+    withdraw.canWithdraw();
+
+    expect(withdraw.balance).toBe(0);
+    expect(withdraw.saveHistory()).toEqual(
+    { date: date,
+      credit: null,
+      debit: 20,
+      balance: 0,
+     }
+    )
+  })
 })
 
 

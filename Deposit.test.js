@@ -23,10 +23,10 @@ describe(Deposit, () => {
   it("creates statement for deposit", () => {
     const deposit = new Deposit(5, 0);
     const date = new Date().toLocaleDateString();
-    
-    const statement = deposit.createStatement();
 
-    expect(statement).toEqual({
+    const history = deposit.saveHistory();
+
+    expect(history).toEqual({
       date: date,
       credit: 5,
       debit: null,
