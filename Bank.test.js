@@ -108,4 +108,15 @@ describe(Bank, () => {
     ])
   })
 
+  it("prints deposit statement in correct format", () => {
+    const account = new Bank();
+    const date = new Date().toLocaleDateString();
+
+    account.deposit(1000);
+
+    expect(account.seeStatement()).toBe(`date || credit || debit || balance\n${date} || 1000.00 || || 1000.00\n`)
+  })
+
+ 
+
 })

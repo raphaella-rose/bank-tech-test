@@ -41,7 +41,11 @@ class Bank {
   }
 
   seeStatement() {
-    let statement = "date || credit || debit || balance"
+    let statement = "date || credit || debit || balance\n"
+    this.statement.forEach((action) => {
+      statement += `${action.date} || ${action.credit}.00 || || ${action.balance}.00\n`
+    })
+    return statement
   }
 
   calculateWithdrawal(amount) {
