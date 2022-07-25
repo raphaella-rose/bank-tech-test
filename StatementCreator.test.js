@@ -1,7 +1,7 @@
 const StatementCreator = require("./StatementCreator");
 
 describe(StatementCreator, () => {
-  it.only("prints single deposit statement in correct format", () => {
+  it("prints single deposit statement in correct format", () => {
     const statementCreator = new StatementCreator();  
     const date = new Date().toLocaleDateString();
     const history = { 
@@ -19,13 +19,12 @@ describe(StatementCreator, () => {
   it("prints single withdrawal statement in correct format", () => {
     const statementCreator = new StatementCreator();  
     const date = new Date().toLocaleDateString();
-    const history = [{ 
+    const history = { 
       date: date,
       credit: null,
       debit: 100,
       balance: 50,
-      },
-    ];
+      };
 
     statementCreator.isWithdrawal(history)
 
