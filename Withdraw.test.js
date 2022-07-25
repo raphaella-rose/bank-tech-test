@@ -6,9 +6,15 @@ describe(Withdraw, () => {
 
     expect(withdraw.amount).toBe(5)
   })
+
+  it("gets date of withdrawal", () => {
+    const withdraw = new Withdraw(5);
+    const date = new Date().toLocaleDateString();
+
+    expect(withdraw.getDate()).toBe(date);
+  })
 })
 
-//sets amount withdrawn
-//gets date of withdrawal
+
 //updates balance
 // creates statement for withdrawal
