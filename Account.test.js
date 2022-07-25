@@ -1,14 +1,14 @@
-const Bank = require("./Bank")
+const Account = require("./Account")
 
-describe(Bank, () => {
-  it("initializes a bank account with a balance of 0", () => {
-    const account = new Bank();
+describe(Account, () => {
+  it("initializes a account account with a balance of 0", () => {
+    const account = new Account();
 
     expect(account.balance).toBe(0);
   })
 
   it("increases balance by 5 when deposit of 5 is made", () => {
-    const account = new Bank();
+    const account = new Account();
 
     account.deposit(5);
 
@@ -16,7 +16,7 @@ describe(Bank, () => {
   })
 
   it("increases balance by 10 when deposit of 10 is made", () => {
-    const account = new Bank();
+    const account = new Account();
 
     account.deposit(10);
 
@@ -24,7 +24,7 @@ describe(Bank, () => {
   })
 
   it("increases balance by 20 when deposit of 20 is made", () => {
-    const account = new Bank();
+    const account = new Account();
 
     account.deposit(20);
 
@@ -32,13 +32,13 @@ describe(Bank, () => {
   })
 
   it("returns empty array when no deposits have been made", () => {
-    const account = new Bank();
+    const account = new Account();
 
     expect(account.statement).toEqual([]);
   })
 
   it("stores the amount, date (dd/mm/yyy) and balance for a single deposit made", () => {
-    const account = new Bank();
+    const account = new Account();
     const date = new Date().toLocaleDateString();
 
     account.deposit(10);
@@ -53,7 +53,7 @@ describe(Bank, () => {
   })
 
   it("allows the user to make a withdrawal of 5", () => {
-    const account = new Bank();
+    const account = new Account();
 
     account.deposit(10);
     account.withdraw(5);
@@ -62,7 +62,7 @@ describe(Bank, () => {
   })
 
   it("allows the user to make a withdrawal of 10", () => {
-    const account = new Bank();
+    const account = new Account();
 
     account.deposit(10);
     account.withdraw(10);
@@ -71,7 +71,7 @@ describe(Bank, () => {
   })
 
   it("user cannot withdraw money when balance is 0", () => {
-    const account = new Bank();
+    const account = new Account();
 
     account.withdraw(5);
 
@@ -79,7 +79,7 @@ describe(Bank, () => {
   })
 
   it("only lets the user withdraw what they have", () => {
-    const account = new Bank();
+    const account = new Account();
 
     account.deposit(10);
     account.withdraw(15);
@@ -88,7 +88,7 @@ describe(Bank, () => {
   })
 
   it("shows a withdrawal amount, date (dd/mm/yyy), balance on statement", () => {
-    const account = new Bank();
+    const account = new Account();
     const date = new Date().toLocaleDateString();
 
     account.deposit(10);
@@ -109,7 +109,7 @@ describe(Bank, () => {
   })
 
   it("prints single deposit statement in correct format", () => {
-    const account = new Bank();
+    const account = new Account();
     const date = new Date().toLocaleDateString();
 
     account.deposit(1000);
@@ -118,7 +118,7 @@ describe(Bank, () => {
   })
 
   it("prints mixed statement in correct format", () => {
-    const account = new Bank();
+    const account = new Account();
     const date = new Date().toLocaleDateString();
 
     account.deposit(1000);
