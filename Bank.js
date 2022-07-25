@@ -11,7 +11,6 @@ class Bank {
   deposit(amount) {
     this.balance += amount;
     const date = new Date().toLocaleDateString();
-
     this.statement.unshift([date, amount, this.balance]);
   }
 

@@ -37,22 +37,27 @@ describe(Bank, () => {
   it("stores the amount for a single deposit made", () => {
     const account = new Bank();
     account.deposit(10);
+    const date = new Date().toLocaleDateString();
 
-    expect(account.seeStatement()).toEqual([["25/07/2022", 10, 10]])
+    expect(account.seeStatement()).toEqual([[date, 10, 10]])
   })
 
   it("stores the balance for a single deposit made", () => {
     const account = new Bank();
     account.deposit(10);
+    const date = new Date().toLocaleDateString();
 
-    expect(account.seeStatement()).toEqual([["25/07/2022", 10, 10]])
+    expect(account.seeStatement()).toEqual([[date, 10, 10]])
   })
 
   it("stores the date for a single deposit in format dd/mm/yyy", () => {
     const account = new Bank();
     account.deposit(10);
+    const date = new Date().toLocaleDateString();
 
-    expect(account.seeStatement()).toEqual([["25/07/2022", 10, 10]])
+    expect(account.seeStatement()).toEqual([[date, 10, 10]])
   })
+
+
 
 })
