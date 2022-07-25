@@ -15,18 +15,15 @@ describe(Withdraw, () => {
   })
 
   it("updates balance after withdrawal", () => {
-    const withdraw = new Withdraw(5);
-
-    withdraw.updateBalance(10);
+    const withdraw = new Withdraw(5, 10);
 
     expect(withdraw.balance).toBe(5);
   })
 
   it("creates statement for withdrawal", () => {
-    const withdraw = new Withdraw(5);
+    const withdraw = new Withdraw(5, 15);
     const date = new Date().toLocaleDateString();
 
-    withdraw.updateBalance(15)
     const statement = withdraw.createStatement();
 
     expect(statement).toEqual({
