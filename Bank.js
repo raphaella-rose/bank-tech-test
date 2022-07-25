@@ -4,10 +4,6 @@ class Bank {
     this.statement = []
   }
 
-  showBalance() {
-    return this.balance;
-  }
-
   deposit(amount) {
     const date = new Date().toLocaleDateString();
 
