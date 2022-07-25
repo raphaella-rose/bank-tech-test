@@ -27,4 +27,12 @@ describe(Bank, () => {
 
     expect(account.showBalance()).toBe(20);
   })
+
+  it("stores deposit history", () => {
+    const account = new Bank();
+    account.deposit(5);
+    account.deposit(30);
+
+    expect(account.seeStatement()).toEqual([30, 5])
+  })
 })

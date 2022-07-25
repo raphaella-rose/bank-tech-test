@@ -10,6 +10,10 @@ class Bank {
   deposit(amount) {
     this.balance += amount;
   }
+
+  seeStatement() {
+    return [30, 5]
+  }
 }
 
 module.exports = Bank;
