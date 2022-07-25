@@ -34,29 +34,25 @@ describe(Bank, () => {
     expect(account.seeStatement()).toEqual([]);
   })
 
-  it("stores the deposit amount and balance after one deposit was made", () => {
-    const account = new Bank();
-    
-    account.deposit(10);
-
-    expect(account.seeStatement()).toEqual([[10,10]]);
-  })
-
-  it("stores the deposit amount and balance after two deposit were made", () => {
-    const account = new Bank();
-    account.deposit(5);
-    account.deposit(30);
-
-    expect(account.seeStatement()).toEqual([[30, 35], [5, 5]]);
-  })
-
-  it("stores the deposit amount and balance after three deposit were made", () => {
+  it("stores the amount for a single deposit made", () => {
     const account = new Bank();
     account.deposit(10);
-    account.deposit(20);
-    account.deposit(5);
 
-    expect(account.seeStatement()).toEqual([[5, 35], [20, 30], [10, 10]])
+    expect(account.seeStatement()).toEqual([["25/07/2022", 10, 10]])
+  })
+
+  it("stores the balance for a single deposit made", () => {
+    const account = new Bank();
+    account.deposit(10);
+
+    expect(account.seeStatement()).toEqual([["25/07/2022", 10, 10]])
+  })
+
+  it("stores the date for a single deposit in format dd/mm/yyy", () => {
+    const account = new Bank();
+    account.deposit(10);
+
+    expect(account.seeStatement()).toEqual([["25/07/2022", 10, 10]])
   })
 
 })
