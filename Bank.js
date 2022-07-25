@@ -16,7 +16,8 @@ class Bank {
 
   withdraw(amount) {
     let newAmount = 0
-    
+    const date = new Date().toLocaleDateString();
+
     if ((this.balance - amount) < 0) {
       newAmount = this.calculateWithdrawal(amount);
     } else {
@@ -24,8 +25,7 @@ class Bank {
     }
 
     this.balance -= newAmount;
-    this.statement.unshift([newAmount])
-    
+    this.statement.unshift([date, newAmount])
     
   }
 

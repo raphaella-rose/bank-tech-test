@@ -9,6 +9,7 @@ describe(Bank, () => {
 
   it("increases balance by 5 when deposit of 5 is made", () => {
     const account = new Bank();
+
     account.deposit(5);
 
     expect(account.showBalance()).toBe(5);
@@ -16,6 +17,7 @@ describe(Bank, () => {
 
   it("increases balance by 10 when deposit of 10 is made", () => {
     const account = new Bank();
+
     account.deposit(10);
 
     expect(account.showBalance()).toBe(10);
@@ -23,6 +25,7 @@ describe(Bank, () => {
 
   it("increases balance by 20 when deposit of 20 is made", () => {
     const account = new Bank();
+
     account.deposit(20);
 
     expect(account.showBalance()).toBe(20);
@@ -36,30 +39,37 @@ describe(Bank, () => {
 
   it("stores the amount for a single deposit made", () => {
     const account = new Bank();
-    account.deposit(10);
     const date = new Date().toLocaleDateString();
+
+    account.deposit(10);
+   
 
     expect(account.seeStatement()).toEqual([[date, 10, 10]])
   })
 
   it("stores the balance for a single deposit made", () => {
     const account = new Bank();
-    account.deposit(10);
     const date = new Date().toLocaleDateString();
+
+    account.deposit(10);
+   
 
     expect(account.seeStatement()).toEqual([[date, 10, 10]])
   })
 
   it("stores the date for a single deposit in format dd/mm/yyy", () => {
     const account = new Bank();
-    account.deposit(10);
     const date = new Date().toLocaleDateString();
+
+    account.deposit(10);
+    
 
     expect(account.seeStatement()).toEqual([[date, 10, 10]])
   })
 
   it("allows the user to make a withdrawal of 5", () => {
     const account = new Bank();
+
     account.deposit(10);
     account.withdraw(5);
     
@@ -68,6 +78,7 @@ describe(Bank, () => {
 
   it("allows the user to make a withdrawal of 10", () => {
     const account = new Bank();
+
     account.deposit(10);
     account.withdraw(10);
     
@@ -76,6 +87,7 @@ describe(Bank, () => {
 
   it("user cannot withdraw money when balance is 0", () => {
     const account = new Bank();
+
     account.withdraw(5);
 
     expect(account.showBalance()).toBe(0);
@@ -83,6 +95,7 @@ describe(Bank, () => {
 
   it("only lets the user withdraw what they have", () => {
     const account = new Bank();
+
     account.deposit(10);
     account.withdraw(15);
 
@@ -92,19 +105,30 @@ describe(Bank, () => {
   it("shows a withdrawal amount on statement", () => {
     const account = new Bank();
     const date = new Date().toLocaleDateString();
+
     account.deposit(10);
     account.withdraw(10);
 
-    expect(account.seeStatement()).toEqual([[10], [date, 10, 10]])
+    expect(account.seeStatement()).toEqual([[date, 10], [date, 10, 10]])
   })
 
   it("shows a withdrawal amount on statement when user attempts to withdraw more than they have", () => {
     const account = new Bank();
     const date = new Date().toLocaleDateString();
+
     account.deposit(10);
     account.withdraw(15);
 
-    expect(account.seeStatement()).toEqual([[10], [date, 10, 10]])
+    expect(account.seeStatement()).toEqual([[date, 10], [date, 10, 10]])
   })
 
+  it("shows the date on statement in format dd/mm/yyy", () => {
+    const account = new Bank();
+    const date = new Date().toLocaleDateString();
+
+    account.deposit(20);
+    account.withdraw(10);
+
+    expect(account.seeStatement()).toEqual([[date, 10], [date, 20, 20]])
+  })
 })
