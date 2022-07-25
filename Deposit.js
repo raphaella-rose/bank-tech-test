@@ -1,7 +1,7 @@
 class Deposit {
-  constructor(amount, balance) {
+  constructor(amount) {
     this.amount = amount;
-    this.balance = balance;
+    this.balance = 0;
   }
 
   getDate() {

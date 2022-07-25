@@ -8,8 +8,6 @@ describe("Bank Integration", () => {
     expect(account.balance).toBe(0);
   })
 
-  
-
   it("returns empty array when no deposits have been made", () => {
     const account = new Account();
 
