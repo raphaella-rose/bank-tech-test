@@ -34,7 +34,7 @@ describe(Bank, () => {
   it("returns empty array when no deposits have been made", () => {
     const account = new Bank();
 
-    expect(account.seeStatement()).toEqual([]);
+    expect(account.statement).toEqual([]);
   })
 
   it("stores the amount for a single deposit made", () => {
@@ -44,7 +44,7 @@ describe(Bank, () => {
     account.deposit(10);
    
 
-    expect(account.seeStatement()).toEqual([[date, 10, 10]])
+    expect(account.statement).toEqual([[date, 10, 10]])
   })
 
   it("stores the balance for a single deposit made", () => {
@@ -54,7 +54,7 @@ describe(Bank, () => {
     account.deposit(10);
    
 
-    expect(account.seeStatement()).toEqual([[date, 10, 10]])
+    expect(account.statement).toEqual([[date, 10, 10]])
   })
 
   it("stores the date for a single deposit in format dd/mm/yyy", () => {
@@ -64,7 +64,7 @@ describe(Bank, () => {
     account.deposit(10);
     
 
-    expect(account.seeStatement()).toEqual([[date, 10, 10]])
+    expect(account.statement).toEqual([[date, 10, 10]])
   })
 
   it("allows the user to make a withdrawal of 5", () => {
@@ -109,7 +109,7 @@ describe(Bank, () => {
     account.deposit(10);
     account.withdraw(10);
 
-    expect(account.seeStatement()).toEqual([[date, 10, 0], [date, 10, 10]])
+    expect(account.statement).toEqual([[date, 10, 0], [date, 10, 10]])
   })
 
   it("shows a withdrawal amount on statement when user attempts to withdraw more than they have", () => {
@@ -119,7 +119,7 @@ describe(Bank, () => {
     account.deposit(10);
     account.withdraw(15);
 
-    expect(account.seeStatement()).toEqual([[date, 10, 0], [date, 10, 10]])
+    expect(account.statement).toEqual([[date, 10, 0], [date, 10, 10]])
   })
 
   it("shows the date on statement in format dd/mm/yyy", () => {
@@ -129,7 +129,7 @@ describe(Bank, () => {
     account.deposit(20);
     account.withdraw(10);
 
-    expect(account.seeStatement()).toEqual([[date, 10, 10], [date, 20, 20]])
+    expect(account.statement).toEqual([[date, 10, 10], [date, 20, 20]])
   })
 
   it("shows balance after withdrawal on statement", () => {
@@ -139,6 +139,6 @@ describe(Bank, () => {
     account.deposit(20);
     account.withdraw(10);
 
-    expect(account.seeStatement()).toEqual([[date, 10, 10], [date, 20, 20]])
+    expect(account.statement).toEqual([[date, 10, 10], [date, 20, 20]])
   })
 })
