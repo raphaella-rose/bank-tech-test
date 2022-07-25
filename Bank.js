@@ -17,6 +17,7 @@ class Bank {
   withdraw(amount) {
     if ((this.balance - amount) < 0) {
       this.balance -= this.calculateWithdrawal(amount)
+      this.statement.unshift([this.calculateWithdrawal(amount)])
     } else {
       this.balance -= amount;
       this.statement.unshift([amount])

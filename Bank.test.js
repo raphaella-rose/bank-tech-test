@@ -98,4 +98,13 @@ describe(Bank, () => {
     expect(account.seeStatement()).toEqual([[10], [date, 10, 10]])
   })
 
+  it("shows a withdrawal amount on statement when user attempts to withdraw more than they have", () => {
+    const account = new Bank();
+    const date = new Date().toLocaleDateString();
+    account.deposit(10);
+    account.withdraw(15);
+
+    expect(account.seeStatement()).toEqual([[0], [date, 10, 10]])
+  })
+
 })
