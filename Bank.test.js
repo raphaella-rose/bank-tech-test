@@ -81,4 +81,12 @@ describe(Bank, () => {
     expect(account.showBalance()).toBe(0);
   })
 
+  it("user cannot withdraw more money than they have", () => {
+    const account = new Bank();
+    account.deposit(10);
+    account.withdraw(15);
+
+    expect(account.showBalance()).toBe(10);
+  })
+
 })

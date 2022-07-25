@@ -17,6 +17,8 @@ class Bank {
   withdraw(amount) {
     if (this.balance == 0) {
       null;
+    } else if ((this.balance - amount) < 0) {
+      null;
     } else {
       this.balance -= amount;
     }
