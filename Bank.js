@@ -1,6 +1,7 @@
 class Bank {
   constructor() {
     this.balance = 0;
+    this.statement = []
   }
 
   showBalance() {
@@ -12,7 +13,12 @@ class Bank {
   }
 
   seeStatement() {
-    return [30, 5]
+    if (this.balance == 0) {
+      return []
+    } else {
+      return [30, 5]
+    }
+   
   }
 }
 

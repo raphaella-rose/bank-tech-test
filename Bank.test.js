@@ -28,11 +28,19 @@ describe(Bank, () => {
     expect(account.showBalance()).toBe(20);
   })
 
-  it("stores deposit history", () => {
+  it("stores deposit history when two deposits were made", () => {
     const account = new Bank();
     account.deposit(5);
     account.deposit(30);
 
-    expect(account.seeStatement()).toEqual([30, 5])
+    expect(account.seeStatement()).toEqual([30, 5]);
   })
+
+  it("returns empty array when no deposits have been made", () => {
+    const account = new Bank();
+
+    expect(account.seeStatement()).toEqual([]);
+  })
+
+ 
 })
