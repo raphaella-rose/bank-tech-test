@@ -104,7 +104,7 @@ describe(Bank, () => {
     account.deposit(10);
     account.withdraw(15);
 
-    expect(account.seeStatement()).toEqual([[0], [date, 10, 10]])
+    expect(account.seeStatement()).toEqual([[10], [date, 10, 10]])
   })
 
 })
