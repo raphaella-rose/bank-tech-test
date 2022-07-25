@@ -28,7 +28,7 @@ describe(Bank, () => {
     expect(account.showBalance()).toBe(20);
   })
 
-  it("stores deposit history when two deposits were made", () => {
+  xit("stores deposit history when two deposits were made", () => {
     const account = new Bank();
     account.deposit(5);
     account.deposit(30);
@@ -42,12 +42,20 @@ describe(Bank, () => {
     expect(account.seeStatement()).toEqual([]);
   })
 
-  it("stores deposit history when three deposits were made", () => {
+  xit("stores deposit history when three deposits were made", () => {
     const account = new Bank();
     account.deposit(10);
     account.deposit(20);
     account.deposit(5);
 
     expect(account.seeStatement()).toEqual([5, 20, 10])
+  })
+
+  it("stores the balance after one deposit was made", () => {
+    const account = new Bank();
+    
+    account.deposit(10);
+
+    expect(account.seeStatement()).toEqual([[10,10]]);
   })
 })

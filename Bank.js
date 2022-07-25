@@ -10,7 +10,7 @@ class Bank {
 
   deposit(amount) {
     this.balance += amount;
-    this.statement.unshift(amount);
+    this.statement.unshift([amount, this.balance]);
   }
 
   seeStatement() {
