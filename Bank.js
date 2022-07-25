@@ -14,6 +14,7 @@ class Bank {
   }
 
   seeStatement() {
+ 
     return this.statement;
   
   }
