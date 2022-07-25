@@ -20,7 +20,6 @@ class Account {
     withdraw.canWithdraw()
     this.balance = withdraw.balance;
     this.statements.unshift(withdraw.saveHistory());
-    
   }
 
   printStatement() {
