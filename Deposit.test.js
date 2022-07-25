@@ -15,18 +15,15 @@ describe(Deposit, () => {
   })
 
   it("updates balance", () => {
-    const deposit = new Deposit(5);
-
-    deposit.updateBalance(0);
+    const deposit = new Deposit(5, 0);
 
     expect(deposit.balance).toBe(5);
   })
 
   it("creates statement for deposit", () => {
-    const deposit = new Deposit(5);
+    const deposit = new Deposit(5, 0);
     const date = new Date().toLocaleDateString();
-
-    deposit.updateBalance(0)
+    
     const statement = deposit.createStatement();
 
     expect(statement).toEqual({

@@ -23,3 +23,17 @@ class Withdraw {
 }
 
 module.exports = Withdraw;
+
+// let newAmount = 0
+// const date = new Date().toLocaleDateString();
+
+// if ((this.balance - amount) < 0) {
+//   newAmount = this.calculateWithdrawal(amount);
+// } else {
+//   newAmount = amount;
+// }
+
+// calculateWithdrawal(amount) {
+//   let difference = amount - this.balance;
+//   return amount - difference;
+// }

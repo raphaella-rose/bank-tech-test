@@ -1,15 +1,11 @@
 class Deposit {
-  constructor(amount) {
+  constructor(amount, currentBalance) {
     this.amount = amount;
-    this.balance = 0;
+    this.balance = currentBalance + this.amount;
   }
 
   getDate() {
     return new Date().toLocaleDateString();
-  }
-
-  updateBalance(currentBalance) {
-    this.balance = currentBalance + this.amount;
   }
 
   createStatement() {
