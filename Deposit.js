@@ -9,7 +9,16 @@ class Deposit {
   }
 
   updateBalance(currentBalance) {
-    return currentBalance + this.amount;
+    this.balance = currentBalance + this.amount;
+  }
+
+  createStatement() {
+    return {
+      date: this.getDate(),
+      credit: this.amount,
+      debit: null,
+      balance: this.balance,
+    }
   }
 
 }
