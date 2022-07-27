@@ -1,4 +1,3 @@
-const Withdraw = require("./Withdraw");
 const Action = require("./Action");
 const StatementCreator = require("./StatementCreator")
 
@@ -15,10 +14,11 @@ class Account {
   }
   
   withdraw(amount) {
-    const withdraw = new Withdraw(amount, this.balance);
-    withdraw.canWithdraw()
+    const withdraw = new Action(amount, this.balance, 'withdraw');
+    withdraw.canWithdraw();
+    this.statements.unshift(withdraw.withdraw());
     this.balance = withdraw.balance;
-    this.statements.unshift(withdraw.saveHistory());
+    
   }
 
   printStatement() {
