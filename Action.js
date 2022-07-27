@@ -10,10 +10,14 @@ class Action {
     return new Date().toLocaleDateString();
   }
 
-  withdraw() {
+  canWithdraw() {
     if ((this.balance - this.amount) < 0 ) {
       this.amount = this.calculateWithdrawal();
     } 
+  }
+  
+  withdraw() {
+    this.canWithdraw();
     this.balance -= this.amount;
     return this.saveHistory();
   }
@@ -39,6 +43,7 @@ class Action {
     history.debit = this.amount;
     return history;
   }
+
   saveHistory() {
     let history = {
       date: this.getDate(),
@@ -52,9 +57,7 @@ class Action {
       this.amendWithdrawHistory(history);
     }
     return history;
-   
   }
-
 
 }
 
