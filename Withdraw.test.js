@@ -1,7 +1,7 @@
 const Withdraw = require("./Withdraw");
 
 describe(Withdraw, () => {
-  it("sets amoount withdrawn", () => {
+  it("sets amount withdrawn", () => {
     const withdraw = new Withdraw(5);
 
     expect(withdraw.amount).toBe(5)
