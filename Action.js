@@ -1,9 +1,9 @@
 //class(amount, currentBalance, actionName)
 class Action {
-
   constructor(amount, balance, action) {
     this.action = action;
   }
+
   updateBalance() {
     if (this.action == 'deposit') {
       return 10;
@@ -12,8 +12,12 @@ class Action {
     }
     
   }
+
+  getDate() {
+    return new Date().toLocaleDateString();
+  }
 }
-//get date
+
 
 
 //save history

@@ -12,4 +12,11 @@ describe(Action, () => {
 
     expect(action.updateBalance()).toBe(5);
   })
+
+  it("gets date of action", () => {
+    const action = new Action(10, 0, 'deposit');
+    const date = new Date().toLocaleDateString();
+
+    expect(action.getDate()).toBe(date);
+  })
 })
