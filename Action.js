@@ -1,4 +1,3 @@
-//class(amount, currentBalance, actionName)
 class Action {
   constructor(amount, balance, action) {
     this.amount = amount;
@@ -15,7 +14,7 @@ class Action {
       this.amount = this.calculateWithdrawal();
     } 
   }
-  
+
   withdraw() {
     this.canWithdraw();
     this.balance -= this.amount;
