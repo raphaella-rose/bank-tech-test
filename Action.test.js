@@ -13,7 +13,10 @@ describe(Action, () => {
   it("updates balance after withdrawal", () => {
     const action = new Action(10, 15, 'withdraw');
 
-    expect(action.updateBalance()).toBe(5);
+    expect(action.withdraw()).toEqual(
+      expect.objectContaining({balance: 5})
+    )
+  
   })
 
   it("gets date of action", () => {
