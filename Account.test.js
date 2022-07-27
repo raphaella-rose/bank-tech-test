@@ -79,10 +79,24 @@ describe(Account, () => {
 
   it("prints a statement for a deposit", () => {
     const account = new Account();
+    deposit.mockReturnValue({ date: date, credit: 20, debit: null, balance: 20 });
+    withdraw.mockReturnValue({ date: date, credit: null, debit: 10, balance: 10 });
+
     const actionDouble = { deposit, withdraw, balance: 20};
 
     account.deposit(20, actionDouble);
 
     expect(account.printStatement()).toBe(`date || credit || debit || balance\n${date} || 20.00 || || 20.00\n`)
+  })
+
+  it("prints a statement for a withdrawal", () => {
+    const account = new Account();
+    const actionDouble1 = { deposit, withdraw, balance: 20};
+    const actionDouble2 = { deposit, withdraw, balance: 10};
+
+    account.deposit(20, actionDouble1);
+    account.withdraw(10, actionDouble2)
+
+    expect(account.printStatement()).toBe(`date || credit || debit || balance\n${date} || || 10.00 || 10.00\n${date} || 20.00 || || 20.00\n`)
   })
 })
