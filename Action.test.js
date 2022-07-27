@@ -1,6 +1,8 @@
 const Action = require("./Action");
 
 describe(Action, () => {
+  const date = new Date().toLocaleDateString();
+
   it("updates balance after deposit", () => {
     const action = new Action();
 
@@ -11,9 +13,9 @@ describe(Action, () => {
   })
 
   it("updates balance after withdrawal", () => {
-    const action = new Action(10, 15, 'withdraw');
+    const action = new Action();
 
-    expect(action.withdraw()).toEqual(
+    expect(action.withdraw(10, 15)).toEqual(
       expect.objectContaining({balance: 5})
     )
   
@@ -21,14 +23,12 @@ describe(Action, () => {
 
   it("gets date of action", () => {
     const action = new Action(10, 0, 'deposit');
-    const date = new Date().toLocaleDateString();
 
     expect(action.getDate()).toBe(date);
   })
 
   it("creates statement for deposit", () => {
     const action = new Action();
-    const date = new Date().toLocaleDateString();
 
     const deposit = action.deposit(5, 0);
 
@@ -41,10 +41,9 @@ describe(Action, () => {
   })
 
   it("creates statement for withdrawal", () => {
-    const action = new Action(10, 10, 'withdraw');
-    const date = new Date().toLocaleDateString();
+    const action = new Action();
 
-    const withdraw = action.withdraw();
+    const withdraw = action.withdraw(10, 10);
 
     expect(withdraw).toEqual({
       date: date,
@@ -55,10 +54,9 @@ describe(Action, () => {
   })  
 
   it("doesn't allow user to withdraw money they don't have", () => {
-    const action = new Action(30, 20, 'withdraw');
-    const date = new Date().toLocaleDateString();
+    const action = new Action();
 
-    const withdraw = action.withdraw();
+    const withdraw = action.withdraw(30, 20);
 
     expect(action.balance).toBe(0);
     expect(withdraw).toEqual(

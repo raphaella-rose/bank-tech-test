@@ -9,20 +9,22 @@ class Action {
     return new Date().toLocaleDateString();
   }
 
-  canWithdraw() {
-    if ((this.balance - this.amount) < 0 ) {
-      this.amount = this.calculateWithdrawal();
+  canWithdraw(balance) {
+    if ((balance - this.amount) < 0 ) {
+      this.amount = this.calculateWithdrawal(balance);
     } 
   }
 
-  withdraw() {
-    this.canWithdraw();
-    this.balance -= this.amount;
+  withdraw(amount, balance) {
+    this.action = 'withdraw';
+    this.amount = amount;
+    this.canWithdraw(balance);
+    this.balance = balance - this.amount;
     return this.saveHistory();
   }
 
-  calculateWithdrawal() {
-    let difference = this.amount - this.balance;
+  calculateWithdrawal(balance) {
+    let difference = this.amount - balance;
     return this.amount - difference;
   }
 
