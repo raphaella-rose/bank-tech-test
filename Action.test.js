@@ -6,4 +6,10 @@ describe(Action, () => {
 
     expect(action.updateBalance()).toBe(10);
   })
+
+  it("updates balance after withdrawal", () => {
+    const action = new Action(10, 15, 'withdrawal');
+
+    expect(action.updateBalance()).toBe(5);
+  })
 })
