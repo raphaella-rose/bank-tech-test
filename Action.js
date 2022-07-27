@@ -27,22 +27,31 @@ class Action {
     this.balance += this.amount;
     return this.saveHistory();
   }
+
+  amendDepositHistory(history) {
+    history.credit = this.amount;
+    history.debit = null;
+    return history;
+  }
+
+  amendWithdrawHistory(history) {
+    history.credit = null;
+    history.debit = this.amount;
+    return history;
+  }
   saveHistory() {
-    if (this.action == 'deposit') {
-      return {
-        date: this.getDate(),
-        credit: this.amount,
-        debit: null,
-        balance: this.balance,
-      }
-    } else {
-      return {
-        date: this.getDate(),
-        credit: null,
-        debit: this.amount,
-        balance: this.balance,
-      }
+    let history = {
+      date: this.getDate(),
+      credit: 0,
+      debit: 0,
+      balance: this.balance,
     }
+    if (this.action == 'deposit') {
+     this.amendDepositHistory(history);
+    } else {
+      this.amendWithdrawHistory(history);
+    }
+    return history;
    
   }
 
