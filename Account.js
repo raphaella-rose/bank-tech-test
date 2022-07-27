@@ -7,10 +7,9 @@ class Account {
     this.statements = []
   }
 
-  deposit(amount) {
-    const deposit = new Action(amount, this.balance, 'deposit');
-    this.statements.unshift(deposit.deposit());
-    this.balance = deposit.balance;
+  deposit(amount, action) {
+    this.statements.unshift(action.deposit(amount, this.balance));
+    this.balance = action.balance;
   }
   
   withdraw(amount) {

@@ -2,9 +2,9 @@ const Action = require("./Action");
 
 describe(Action, () => {
   it("updates balance after deposit", () => {
-    const action = new Action(10, 0, 'deposit');
+    const action = new Action();
 
-    expect(action.deposit()).toEqual(
+    expect(action.deposit(10, 0)).toEqual(
       expect.objectContaining({balance: 10})
     )
    
@@ -27,10 +27,10 @@ describe(Action, () => {
   })
 
   it("creates statement for deposit", () => {
-    const action = new Action(5, 0, 'deposit');
+    const action = new Action();
     const date = new Date().toLocaleDateString();
 
-    const deposit = action.deposit();
+    const deposit = action.deposit(5, 0);
 
     expect(deposit).toEqual({
       date: date,

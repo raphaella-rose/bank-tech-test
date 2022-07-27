@@ -1,8 +1,8 @@
 class Action {
-  constructor(amount, balance, action) {
+  constructor(amount, balance) {
     this.amount = amount;
     this.balance = balance;
-    this.action = action;
+    this.action = "";
   }
 
   getDate() {
@@ -26,8 +26,10 @@ class Action {
     return this.amount - difference;
   }
 
-  deposit() {
-    this.balance += this.amount;
+  deposit(amount, balance) {
+    this.action = 'deposit';
+    this.amount = amount;
+    this.balance = balance + amount;
     return this.saveHistory();
   }
 
