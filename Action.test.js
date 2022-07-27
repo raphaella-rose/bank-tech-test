@@ -19,4 +19,18 @@ describe(Action, () => {
 
     expect(action.getDate()).toBe(date);
   })
+
+  it("creates statement for deposit", () => {
+    const action = new Action(5, 0, 'deposit');
+    const date = new Date().toLocaleDateString();
+
+    const history = action.saveHistory();
+
+    expect(history).toEqual({
+      date: date,
+      credit: 5,
+      debit: null,
+      balance: 5,
+    })
+  })
 })

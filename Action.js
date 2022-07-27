@@ -1,6 +1,8 @@
 //class(amount, currentBalance, actionName)
 class Action {
   constructor(amount, balance, action) {
+    this.amount = amount;
+    this.balance = balance + amount;
     this.action = action;
   }
 
@@ -15,6 +17,15 @@ class Action {
 
   getDate() {
     return new Date().toLocaleDateString();
+  }
+
+  saveHistory() {
+    return {
+      date: this.getDate(),
+      credit: this.amount,
+      debit: null,
+      balance: this.balance,
+    }
   }
 }
 
