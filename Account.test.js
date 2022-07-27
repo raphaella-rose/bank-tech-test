@@ -11,9 +11,9 @@ describe(Account, () => {
   })
 
   it("allows user to make a deposit", () => {
-    const account = new Account();
     const date = new Date().toLocaleDateString();
-
+    const account = new Account();
+   
     account.deposit(20);
 
     expect(account.balance).toBe(20);

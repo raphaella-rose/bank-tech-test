@@ -1,5 +1,5 @@
-const Deposit = require("./Deposit");
 const Withdraw = require("./Withdraw");
+const Action = require("./Action");
 const StatementCreator = require("./StatementCreator")
 
 class Account {
@@ -9,10 +9,9 @@ class Account {
   }
 
   deposit(amount) {
-    const deposit = new Deposit(amount, this.balance);
+    const deposit = new Action(amount, this.balance, 'deposit');
+    this.statements.unshift(deposit.deposit());
     this.balance = deposit.balance;
-    this.statements.unshift(deposit.saveHistory());
-    
   }
   
   withdraw(amount) {
