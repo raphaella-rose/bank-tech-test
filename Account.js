@@ -23,6 +23,9 @@ class Account {
   }
 
   printStatement() {
+    if (this.statements == []) {
+      throw 'Cannot create statement when no deposits/withdrawals have been made'
+    }
     const statementcreator = new StatementCreator();
     return statementcreator.createStatement(this.statements);
   }

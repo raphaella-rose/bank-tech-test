@@ -1,16 +1,18 @@
 const Account = require("./Account");
 
 describe(Account, () => {
-  it("initializes a account account with a balance of 0", () => {
+  it("initializes an account with a balance of 0", () => {
     const account = new Account();
 
     expect(account.balance).toBe(0);
   })
 
-  it("returns empty array when no deposits have been made", () => {
+  it("returns an error when createStatement is called on empty array", () => {
     const account = new Account();
 
-    expect(account.statements).toEqual([]);
+    expect(() => {
+      account.printStatement().toThrow('Cannot create statement when no deposits/withdrawals have been made');
+    })
   })
 
   it("allows user to make a deposit", () => {
