@@ -1,11 +1,6 @@
 const Account = require("./Account");
 
 describe(Account, () => {
-  it("initializes an account with a balance of 0", () => {
-    const account = new Account();
-
-    expect(account.balance).toBe(0);
-  })
 
   it("returns an error when createStatement is called on empty array", () => {
     const account = new Account();
