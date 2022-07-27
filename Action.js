@@ -2,7 +2,7 @@
 class Action {
   constructor(amount, balance, action) {
     this.amount = amount;
-    this.balance = balance + amount;
+    this.balance = balance;
     this.action = action;
   }
 
@@ -12,26 +12,41 @@ class Action {
     } else {
       return 5
     }
-    
   }
 
   getDate() {
     return new Date().toLocaleDateString();
   }
 
+  withdraw() {
+    this.balance -= this.amount;
+    return this.saveHistory();
+  }
+
+  deposit() {
+    this.balance += this.amount;
+    return this.saveHistory();
+  }
   saveHistory() {
-    return {
-      date: this.getDate(),
-      credit: this.amount,
-      debit: null,
-      balance: this.balance,
+    if (this.action == 'deposit') {
+      return {
+        date: this.getDate(),
+        credit: this.amount,
+        debit: null,
+        balance: this.balance,
+      }
+    } else {
+      return {
+        date: this.getDate(),
+        credit: null,
+        debit: this.amount,
+        balance: this.balance,
+      }
     }
+   
   }
 }
 
-
-
-//save history
 
 //can withdraw
 
