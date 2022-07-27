@@ -47,4 +47,20 @@ describe(Action, () => {
       balance: 0,
     })
   })  
+
+  it("doesn't allow user to withdraw money they don't have", () => {
+    const action = new Action(30, 20, 'withdraw');
+    const date = new Date().toLocaleDateString();
+
+    const withdraw = action.withdraw();
+
+    expect(action.balance).toBe(0);
+    expect(withdraw).toEqual(
+    { date: date,
+      credit: null,
+      debit: 20,
+      balance: 0,
+     }
+    )
+  })
 })

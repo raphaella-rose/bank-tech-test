@@ -19,6 +19,9 @@ class Action {
   }
 
   withdraw() {
+    if ((this.balance - this.amount) < 0 ) {
+      this.amount = this.calculateWithdrawal();
+    } 
     this.balance -= this.amount;
     return this.saveHistory();
   }
@@ -45,6 +48,12 @@ class Action {
     }
    
   }
+
+  calculateWithdrawal() {
+    let difference = this.amount - this.balance;
+    return this.amount - difference;
+  }
+
 }
 
 
