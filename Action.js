@@ -6,14 +6,6 @@ class Action {
     this.action = action;
   }
 
-  updateBalance() {
-    if (this.action == 'deposit') {
-      return 10;
-    } else {
-      return 5
-    }
-  }
-
   getDate() {
     return new Date().toLocaleDateString();
   }
