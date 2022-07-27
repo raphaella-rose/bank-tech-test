@@ -4,7 +4,10 @@ describe(Action, () => {
   it("updates balance after deposit", () => {
     const action = new Action(10, 0, 'deposit');
 
-    expect(action.updateBalance()).toBe(10);
+    expect(action.deposit()).toEqual(
+      expect.objectContaining({balance: 10})
+    )
+   
   })
 
   it("updates balance after withdrawal", () => {

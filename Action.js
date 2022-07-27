@@ -26,6 +26,11 @@ class Action {
     return this.saveHistory();
   }
 
+  calculateWithdrawal() {
+    let difference = this.amount - this.balance;
+    return this.amount - difference;
+  }
+
   deposit() {
     this.balance += this.amount;
     return this.saveHistory();
@@ -49,16 +54,9 @@ class Action {
    
   }
 
-  calculateWithdrawal() {
-    let difference = this.amount - this.balance;
-    return this.amount - difference;
-  }
 
 }
 
 
-//can withdraw
-
-//calculate withdrawal
 
 module.exports = Action;
