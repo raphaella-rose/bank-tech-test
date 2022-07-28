@@ -13,4 +13,10 @@ describe(History, () => {
       balance: 10,
     })
   })
+
+  it("gets date of action", () => {
+    const history = new History();
+
+    expect(history.getDate()).toBe(date);
+  })
 })

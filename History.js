@@ -8,6 +8,11 @@ class History {
       balance: 10,
     }
   }
+
+  getDate() {
+    return new Date().toLocaleDateString();
+  }
+
 }
 
 module.exports = History;
