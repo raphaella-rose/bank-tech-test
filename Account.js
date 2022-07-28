@@ -4,6 +4,10 @@ class Account {
     this.statements = []
   }
 
+  amountChecker(amount) {
+    return amount
+  }
+
   deposit(amount, action) {
     this.statements.unshift(action.deposit(amount, this.balance));
     this.balance = action.balance;

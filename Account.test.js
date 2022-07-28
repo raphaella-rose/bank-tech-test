@@ -91,4 +91,13 @@ describe(Account, () => {
 
     expect(account.printStatement(statementCreatorDouble)).toBe(`date || credit || debit || balance\n${date} || || 10.00 || 10.00\n${date} || 20.00 || || 20.00\n`)
   })
+
+  it("returns amount entry if it is a number", () => {
+    const account = new Account(); 
+
+    const amountChecker = account.amountChecker(20)
+
+    expect(typeof amountChecker).toBe("number")
+
+  })
 })
