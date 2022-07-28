@@ -3,8 +3,8 @@ const Account = require("./Account");
 describe(Account, () => {
   const date = new Date().toLocaleDateString();
 
-  const deposit = jest.fn();
-  deposit.mockReturnValue({ date: date, credit: 20, debit: null, balance: 20 });
+  // const deposit = jest.fn();
+  // deposit.mockReturnValue({ date: date, credit: 20, debit: null, balance: 20 });
   const withdraw = jest.fn();
   withdraw.mockReturnValue({ date: date, credit: null, debit: 10, balance: 10 });
 
@@ -19,7 +19,7 @@ describe(Account, () => {
 
   it("allows user to make a deposit", () => {
     const account = new Account();
-    const actionDouble = { deposit, withdraw, balance: 20};
+    const actionDouble = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw, balance: 20};
 
     account.deposit(20, actionDouble);
 
@@ -34,7 +34,7 @@ describe(Account, () => {
 
   it("allows user to make a withdrawal", () => {
     const account = new Account();
-    const actionDouble = { deposit, withdraw, balance: 10};
+    const actionDouble = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw, balance: 10};
 
     account.deposit(20, actionDouble)
     account.withdraw(10, actionDouble);
@@ -55,10 +55,9 @@ describe(Account, () => {
 
   it("doesn't allow user to withdraw money they don't have", () => {
     const account = new Account();
-    deposit.mockReturnValue({ date: date, credit: 20, debit: null, balance: 20 });
     withdraw.mockReturnValue({ date: date, credit: null, debit: 20, balance: 0 });
 
-    const actionOverdraftDouble = { deposit, withdraw, balance: 0};
+    const actionOverdraftDouble = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw, balance: 0};
 
     account.deposit(20, actionOverdraftDouble)
     account.withdraw(30, actionOverdraftDouble);
@@ -79,9 +78,8 @@ describe(Account, () => {
 
   it("prints a statement for a deposit", () => {
     const account = new Account();
-    deposit.mockReturnValue({ date: date, credit: 20, debit: null, balance: 20 });
     withdraw.mockReturnValue({ date: date, credit: null, debit: 10, balance: 10 });
-    const actionDouble = { deposit, withdraw, balance: 20};
+    const actionDouble = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw, balance: 20};
     const statementCreatorDouble = {createStatement: () => `date || credit || debit || balance\n${date} || 20.00 || || 20.00\n`};
 
     account.deposit(20, actionDouble);
@@ -91,8 +89,8 @@ describe(Account, () => {
 
   it("prints a statement for a withdrawal", () => {
     const account = new Account();
-    const actionDouble1 = { deposit, withdraw, balance: 20};
-    const actionDouble2 = { deposit, withdraw, balance: 10};
+    const actionDouble1 = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw, balance: 20};
+    const actionDouble2 = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw, balance: 10};
     const statementCreatorDouble = {createStatement: () => `date || credit || debit || balance\n${date} || || 10.00 || 10.00\n${date} || 20.00 || || 20.00\n`};
 
 
