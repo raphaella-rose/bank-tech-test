@@ -1,5 +1,3 @@
-const StatementCreator = require("./StatementCreator")
-
 class Account {
   constructor() {
     this.balance = 0;
@@ -16,12 +14,11 @@ class Account {
     this.balance = action.balance;
   }
 
-  printStatement() {
+  printStatement(statementCreator) {
     if (this.statements == []) {
       throw 'Cannot create statement when no deposits/withdrawals have been made'
     }
-    const statementcreator = new StatementCreator();
-    return statementcreator.createStatement(this.statements);
+    return statementCreator.createStatement(this.statements);
   }
 
 }
