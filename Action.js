@@ -1,3 +1,5 @@
+const History = require("./History");
+
 class Action {
   constructor(amount, balance) {
     this.amount = amount;
@@ -48,18 +50,20 @@ class Action {
   }
 
   saveHistory() {
-    let history = {
+    const history = new History();
+    history.returnHistory(this.amount, this.balance, this.action);
+    let historyData = {
       date: this.getDate(),
       credit: 0,
       debit: 0,
       balance: this.balance,
     }
     if (this.action == 'deposit') {
-     this.amendDepositHistory(history);
+     this.amendDepositHistory(historyData);
     } else {
-      this.amendWithdrawHistory(history);
+      this.amendWithdrawHistory(historyData);
     }
-    return history;
+    return historyData;
   }
 
 }
