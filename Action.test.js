@@ -21,12 +21,6 @@ describe(Action, () => {
   
   })
 
-  it("gets date of action", () => {
-    const action = new Action(10, 0, 'deposit');
-
-    expect(action.getDate()).toBe(date);
-  })
-
   it("creates statement for deposit", () => {
     const action = new Action();
 

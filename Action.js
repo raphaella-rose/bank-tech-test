@@ -7,9 +7,6 @@ class Action {
     this.action = "";
   }
 
-  getDate() {
-    return new Date().toLocaleDateString();
-  }
 
   canWithdraw(balance) {
     if ((balance - this.amount) < 0 ) {
@@ -37,33 +34,11 @@ class Action {
     return this.saveHistory();
   }
 
-  amendDepositHistory(history) {
-    history.credit = this.amount;
-    history.debit = null;
-    return history;
-  }
-
-  amendWithdrawHistory(history) {
-    history.credit = null;
-    history.debit = this.amount;
-    return history;
-  }
-
   saveHistory() {
     const history = new History();
-    history.returnHistory(this.amount, this.balance, this.action);
-    let historyData = {
-      date: this.getDate(),
-      credit: 0,
-      debit: 0,
-      balance: this.balance,
-    }
-    if (this.action == 'deposit') {
-     this.amendDepositHistory(historyData);
-    } else {
-      this.amendWithdrawHistory(historyData);
-    }
-    return historyData;
+    const actionHistory = history.returnHistory(this.amount, this.balance, this.action);
+
+    return actionHistory;
   }
 
 }
