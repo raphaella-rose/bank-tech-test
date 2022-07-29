@@ -1,9 +1,12 @@
 const Account = require("./Account");
 const Action = require("./Action");
 const History = require("./History");
+const StatementCreator = require("./StatementCreator");
 const statementCreator = require("./StatementCreator");
 
 describe("Bank Integration", () => {
+  const date = new Date().toLocaleDateString();
+
   it("allows user to make a deposit", () => {
     const account = new Account(); 
     const action = new Action();
@@ -28,4 +31,15 @@ describe("Bank Integration", () => {
 
     expect(account.withdraw(30, action)).toBe("Withdrawal successful")
   })
+
+  it("prints statement for a withdrawal", () => {
+    const account = new Account(); 
+    const action = new Action();
+    const statementCreator = new StatementCreator();
+
+    account.deposit(20, action)
+
+    expect(account.printStatement(statementCreator)).toBe(`date || credit || debit || balance\n${date} || 20.00 || || 20.00\n`)
+  })
+
 })
