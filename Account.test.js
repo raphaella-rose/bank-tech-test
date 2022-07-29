@@ -32,8 +32,8 @@ describe(Account, () => {
     const actionDouble = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw: () => ({ date: date, credit: null, debit: 10, balance: 10 }), balance: 10};
 
     account.deposit(20, actionDouble)
-    account.withdraw(10, actionDouble);
 
+    expect(account.withdraw(10, actionDouble)).toBe("Withdrawal successful")
     expect(account.balance).toBe(10);
     expect(account.statements).toEqual([
     { date: date,

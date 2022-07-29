@@ -10,4 +10,13 @@ describe("Bank Integration", () => {
 
     expect(account.deposit(20, action)).toBe("Deposit successful")
   })
+
+  it("allows user to make a withdrawal", () => {
+    const account = new Account(); 
+    const action = new Action();
+
+    account.deposit(20, action)
+    
+    expect(account.withdraw(20, action)).toBe("Withdrawal successful")
+  })
 })
