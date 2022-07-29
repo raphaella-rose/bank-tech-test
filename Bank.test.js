@@ -59,6 +59,17 @@ describe("Bank Integration", () => {
 
     expect(account.deposit('20', action)).toBe("Deposit successful");
     expect(account.printStatement(statementCreator)).toBe(`date || credit || debit || balance\n${date} || 20.00 || || 20.00\n`)
+  })
 
+
+  it("allows user to make a withdrawal when amount is a string", () => {
+    const account = new Account();
+    const action = new Action();
+    const statementCreator = new StatementCreator();
+
+    account.deposit(20, action)
+
+    expect(account.withdraw('10', action)).toBe("Withdrawal successful")
+    expect(account.printStatement(statementCreator)).toBe(`date || credit || debit || balance\n${date} || || 10.00 || 10.00\n${date} || 20.00 || || 20.00\n`)
   })
 })
