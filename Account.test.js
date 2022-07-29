@@ -109,4 +109,19 @@ describe(Account, () => {
     expect(typeof amountChecker).toBe("number");
     expect(amountChecker).toBe(20);
   })
+
+  it("converts string amount to number when making a deposit", () => {
+    const account = new Account();
+    const actionDouble = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw: () => ({ date: date, credit: null, debit: 10, balance: 10 }), balance: 20};
+
+    expect(account.deposit('20', actionDouble)).toBe("Deposit successful");
+    expect(account.balance).toBe(20);
+    expect(account.statements).toEqual([{ 
+      date: date,
+      credit: 20,
+      debit: null,
+      balance: 20,
+    }])
+
+  })
 })

@@ -12,7 +12,7 @@ class Account {
   }
 
   deposit(amount, action) {
-    this.statements.unshift(action.deposit(amount, this.balance));
+    this.statements.unshift(action.deposit(this.amountChecker(amount), this.balance));
     this.balance = action.balance;
     return "Deposit successful"
   }
