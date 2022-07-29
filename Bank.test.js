@@ -51,4 +51,14 @@ describe("Bank Integration", () => {
     expect(account.printStatement(statementCreator)).toBe(`date || credit || debit || balance\n${date} || || 10.00 || 10.00\n${date} || 20.00 || || 20.00\n`)
 
   })
+
+  it("converts string amount to number when making a deposit", () => {
+    const account = new Account();
+    const action = new Action();
+    const statementCreator = new StatementCreator();
+
+    expect(account.deposit('20', action)).toBe("Deposit successful");
+    expect(account.printStatement(statementCreator)).toBe(`date || credit || debit || balance\n${date} || 20.00 || || 20.00\n`)
+
+  })
 })
