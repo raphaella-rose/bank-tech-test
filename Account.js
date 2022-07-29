@@ -5,6 +5,9 @@ class Account {
   }
 
   amountChecker(amount) {
+    if (typeof amount == "string") {
+      return Number(amount);
+    }
     return amount
   }
 

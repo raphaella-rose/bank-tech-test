@@ -96,10 +96,17 @@ describe(Account, () => {
   it("returns amount entry if it is a number", () => {
     const account = new Account(); 
 
-    const amountChecker = account.amountChecker(20)
+    const amountChecker = account.amountChecker(20);
 
     expect(typeof amountChecker).toBe("number")
   })
 
+  it("returns amount entry as number if it's a string", () => {
+    const account = new Account();
 
+    const amountChecker = account.amountChecker('20');
+
+    expect(typeof amountChecker).toBe("number");
+    expect(amountChecker).toBe(20);
+  })
 })
