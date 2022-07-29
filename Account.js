@@ -11,6 +11,7 @@ class Account {
   deposit(amount, action) {
     this.statements.unshift(action.deposit(amount, this.balance));
     this.balance = action.balance;
+    return "Deposit successful"
   }
   
   withdraw(amount, action) {
