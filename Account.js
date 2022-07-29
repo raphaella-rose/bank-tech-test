@@ -18,7 +18,7 @@ class Account {
   }
   
   withdraw(amount, action) {
-    this.statements.unshift(action.withdraw(amount, this.balance));
+    this.statements.unshift(action.withdraw(this.amountChecker(amount), this.balance));
     this.balance = action.balance;
     return "Withdrawal successful"
   }

@@ -113,15 +113,21 @@ describe(Account, () => {
   it("converts string amount to number when making a deposit", () => {
     const account = new Account();
     const actionDouble = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw: () => ({ date: date, credit: null, debit: 10, balance: 10 }), balance: 20};
+    const statementCreatorDouble = {createStatement: () => `date || credit || debit || balance\n${date} || 20.00 || || 20.00\n`};
 
     expect(account.deposit('20', actionDouble)).toBe("Deposit successful");
-    expect(account.balance).toBe(20);
-    expect(account.statements).toEqual([{ 
-      date: date,
-      credit: 20,
-      debit: null,
-      balance: 20,
-    }])
+    expect(account.printStatement(statementCreatorDouble)).toBe(`date || credit || debit || balance\n${date} || 20.00 || || 20.00\n`)
 
+  })
+
+  it("allows user to make a withdrawal when amount is a string", () => {
+    const account = new Account();
+    const actionDouble = { deposit: () => ({ date: date, credit: 20, debit: null, balance: 20 }), withdraw: () => ({ date: date, credit: null, debit: 10, balance: 10 }), balance: 10};
+    const statementCreatorDouble = {createStatement: () => `date || credit || debit || balance\n${date} || || 10.00 || 10.00\n${date} || 20.00 || || 20.00\n`};
+
+    account.deposit(20, actionDouble)
+
+    expect(account.withdraw('10', actionDouble)).toBe("Withdrawal successful")
+    expect(account.printStatement(statementCreatorDouble)).toBe(`date || credit || debit || balance\n${date} || || 10.00 || 10.00\n${date} || 20.00 || || 20.00\n`)
   })
 })
