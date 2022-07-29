@@ -16,7 +16,16 @@ describe("Bank Integration", () => {
     const action = new Action();
 
     account.deposit(20, action)
-    
+
     expect(account.withdraw(20, action)).toBe("Withdrawal successful")
+  })
+
+  it("doesn't allow user to withdraw money they don't have", () => {
+    const account = new Account(); 
+    const action = new Action();
+
+    account.deposit(20, action)
+
+    expect(account.withdraw(30, action)).toBe("Withdrawal successful")
   })
 })
