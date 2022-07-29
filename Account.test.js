@@ -99,6 +99,7 @@ describe(Account, () => {
     const amountChecker = account.amountChecker(20)
 
     expect(typeof amountChecker).toBe("number")
-
   })
+
+
 })

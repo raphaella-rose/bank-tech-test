@@ -1,6 +1,5 @@
 const Account = require("./Account");
 const Action = require("./Action");
-const History = require("./History");
 const StatementCreator = require("./StatementCreator");
 
 describe("Bank Integration", () => {

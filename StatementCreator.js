@@ -24,11 +24,11 @@ class StatementCreator  {
   }
 
   depositStatement(deposit) {
-    this.statement += `${deposit.date} || ${deposit.credit}.00 || || ${deposit.balance}.00\n`;
+    this.statement += `${deposit.date} || ${deposit.credit.toFixed(2)} || || ${deposit.balance.toFixed(2)}\n`;
   }
 
   withdrawalStatement(withdrawal) {
-    this.statement +=  `${withdrawal.date} || || ${withdrawal.debit}.00 || ${withdrawal.balance}.00\n`;
+    this.statement +=  `${withdrawal.date} || || ${withdrawal.debit.toFixed(2)} || ${withdrawal.balance.toFixed(2)}\n`;
   }
 
 }
