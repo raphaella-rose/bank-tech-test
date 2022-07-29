@@ -2,7 +2,6 @@ const Account = require("./Account");
 const Action = require("./Action");
 const History = require("./History");
 const StatementCreator = require("./StatementCreator");
-const statementCreator = require("./StatementCreator");
 
 describe("Bank Integration", () => {
   const date = new Date().toLocaleDateString();
@@ -32,7 +31,7 @@ describe("Bank Integration", () => {
     expect(account.withdraw(30, action)).toBe("Withdrawal successful")
   })
 
-  it("prints statement for a withdrawal", () => {
+  it("prints statement for a deposit", () => {
     const account = new Account(); 
     const action = new Action();
     const statementCreator = new StatementCreator();
@@ -42,4 +41,15 @@ describe("Bank Integration", () => {
     expect(account.printStatement(statementCreator)).toBe(`date || credit || debit || balance\n${date} || 20.00 || || 20.00\n`)
   })
 
+  it("prints statement for deposit and withdrawal", () => {
+    const account = new Account(); 
+    const action = new Action();
+    const statementCreator = new StatementCreator();
+
+    account.deposit(20, action)
+    account.withdraw(10, action)
+
+    expect(account.printStatement(statementCreator)).toBe(`date || credit || debit || balance\n${date} || || 10.00 || 10.00\n${date} || 20.00 || || 20.00\n`)
+
+  })
 })
